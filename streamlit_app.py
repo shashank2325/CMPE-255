@@ -11,7 +11,9 @@ st.title('USA Names Data Analysis')
 st.write('1) Dataset Name - USA Names')
 
 ssl_context = ssl.create_default_context(cafile=certifi.where())
-df = pd.read_csv("https://raw.githubusercontent.com/shashank2325/CMPE-255/main/USA_names.csv")
+df_male = pd.read_csv("https://raw.githubusercontent.com/shashank2325/CMPE-255/main/USAMale_names.csv").drop(columns=['Unnamed: 0'])
+df_female = pd.read_csv("https://raw.githubusercontent.com/shashank2325/CMPE-255/main/USAFemale_names.csv").drop(columns=['Unnamed: 0'])
+df = pd.concat([df_male, df_female], ignore_index=True)
 
 # Filter the data for California and the name "Michael"
 df_ca = df[df['state'] == 'CA']
