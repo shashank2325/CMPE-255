@@ -127,7 +127,7 @@ fig7 = px.histogram(df1, x='hour', title='Bike Usage Throughout the Day',
                     labels={'hour': 'Hour of the Day'}, nbins=24)
 fig7.update_xaxes(range=[0, 23], dtick=1)
 
-st.plotly_chart(fig1)
+st.plotly_chart(fig7)
 
 # Plotting bike usage patterns for subscribers vs customers
 fig8 = px.histogram(df1, x='duration_sec', color='subscriber_type',
@@ -136,7 +136,7 @@ fig8 = px.histogram(df1, x='duration_sec', color='subscriber_type',
                     marginal='box', nbins=100)
 fig8.update_xaxes(range=[0, df1['duration_sec'].quantile(0.95)])  # Exclude outliers
 
-st.plotly_chart(fig2)
+st.plotly_chart(fig8)
 
 # Plotting the most popular start stations
 start_station_counts = df1['start_station_name'].value_counts().reset_index()
@@ -170,6 +170,3 @@ fig11 = px.line(monthly_trends, x='year_month', y='count',
                labels={'count': 'Number of Trips', 'year_month': 'Month'})
 
 st.plotly_chart(fig11)
-
-
-
